@@ -1,65 +1,185 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<!doctype html>
+<html>
   <head>
-    <meta charset="UTF-8">
-    <title>Machinelearning by turkoh</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Human Activity Recognition by turkoh</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-    <section class="page-header">
-      <h1 class="project-name">Machinelearning</h1>
-      <h2 class="project-tagline">Practical Machine Learning (Coursera)</h2>
-      <a href="https://github.com/turkoh/MachineLearning" class="btn">View on GitHub</a>
-      <a href="https://github.com/turkoh/MachineLearning/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/turkoh/MachineLearning/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Human Activity Recognition</h1>
+        <p class="header">Practical Machine Learning (Coursera)</p>
 
-    <section class="main-content">
-      <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/turkoh/MachineLearning/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/turkoh/MachineLearning/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/turkoh/MachineLearning">View On GitHub</a></li>
+        </ul>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/turkoh">turkoh</a></p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+      </header>
+      <section>
+        <div>
 
-<h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<div id="header">
+<h1>
+<a id="human-activity-recognition" class="anchor" href="#human-activity-recognition" aria-hidden="true"><span class="octicon octicon-link"></span></a>Human Activity Recognition</h1>
+<h4>
+<a id="peer-assessment-practical-machine-learning-project-coursera--by-m-turk" class="anchor" href="#peer-assessment-practical-machine-learning-project-coursera--by-m-turk" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Peer Assessment: Practical Machine Learning Project (Coursera) – by: M Turk</em>
+</h4>
+<h4>
+<a id="friday-may-22-2015" class="anchor" href="#friday-may-22-2015" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Friday, May 22, 2015</em>
+</h4>
+</div>
 
-<h3>
-<a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<div id="background">
+<h1>
+<a id="background" class="anchor" href="#background" aria-hidden="true"><span class="octicon octicon-link"></span></a>Background</h1>
+<p>Using devices such as Jawbone Up, Nike FuelBand, and Fitbit it is now possible to collect a large amount of data about personal activity relatively inexpensively. These type of devices are part of the quantified self movement - a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. One thing that people regularly do is quantify how much of a particular activity they do, but they rarely quantify how well they do it. In this project, your goal will be to use data from accelerometers on the belt, forearm, arm, and dumbbell of 6 participants. They were asked to perform barbell lifts correctly and incorrectly in 5 different ways. More information is available from the website here: URL:<a href="http://groupware.les.inf.puc-rio.br/har"></a><a href="http://groupware.les.inf.puc-rio.br/har">http://groupware.les.inf.puc-rio.br/har</a> (see the section on the Weight Lifting Exercise Dataset).</p>
+</div>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<div id="data">
+<h1>
+<a id="data" class="anchor" href="#data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data</h1>
+<p>The training data for this project are available here: URL:<a href="https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"></a><a href="https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv">https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv</a></p>
+<p>The test data are available here: URL:<a href="https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"></a><a href="https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv">https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv</a></p>
+</div>
 
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<div id="require-libraries">
+<h1>
+<a id="require-libraries" class="anchor" href="#require-libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>Require Libraries</h1>
+<pre><code>require(caret)</code></pre>
+</div>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<div id="load-and-preprocess-data">
+<h1>
+<a id="load-and-preprocess-data" class="anchor" href="#load-and-preprocess-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Load and Preprocess data</h1>
+<p>Loading the data and updating the values of ‘#DIV/0!’ to NA.</p>
+<p>Further preprocessing of the NA’s into meaningful values for machine learning models will be to assign the mean of the field to the NA’s in that field and using the nearZeroVar function in caret to remove the near zero variance predictors.</p>
+<pre><code># Load Data and preprocess na's.
+training_set &lt;- read.csv("pml-training.csv", na.strings=c("NA","#DIV/0!",""))
+testing_set &lt;- read.csv("pml-testing.csv", na.strings=c("NA","#DIV/0!",""))
 
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+# Assigning the column mean to the NA values for each column.
+for (col in names(training_set)){if(class(training_set[[col]]) %in% c("integer", "numeric")){
+                avg&lt;-mean(training_set[[col]], na.rm = TRUE)
+                training_set[[col]][is.na(training_set[[col]])]&lt;-avg}}
 
-<p>Having trouble with Pages? Check out the documentation at <a href="https://help.github.com/pages">https://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+# Remove 1:5 columns of irrelivent data.
+training_set &lt;- training_set[,-c(1:5)]
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/turkoh/MachineLearning">Machinelearning</a> is maintained by <a href="https://github.com/turkoh">turkoh</a>.</span>
+# Remove near zero variance predictors.
+training_set &lt;- training_set[,-nearZeroVar(training_set)]</code></pre>
+</div>
 
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+<div id="create-traintest-datasets">
+<h1>
+<a id="create-traintest-datasets" class="anchor" href="#create-traintest-datasets" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create Train/Test Datasets</h1>
+<p>Create a training and testing dataset partition using the createDataPartition function in caret.</p>
+<pre><code>inTrain &lt;- createDataPartition(y=training_set$classe, p=0.7, list=FALSE)
+train &lt;- training_set[inTrain,]
+test &lt;- training_set[-inTrain,]</code></pre>
+</div>
+
+<div id="train-model">
+<h1>
+<a id="train-model" class="anchor" href="#train-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Train Model</h1>
+<p>Use randomForest function in caret and the “train” dataset partition to train model.</p>
+<pre><code>cv &lt;- trainControl(method="cv", number=3)
+modelFit &lt;- train(train$classe~., data=train, method="rf", trControl=cv)</code></pre>
+</div>
+
+<div id="model-results">
+<h1>
+<a id="model-results" class="anchor" href="#model-results" aria-hidden="true"><span class="octicon octicon-link"></span></a>Model Results</h1>
+<p>Use the model trained from the “train” dataset partition to predict “test” dataset partition and analyse the predicted results.</p>
+<pre><code>results &lt;- predict(modelFit, test)
+confusionMatrix(results, test$classe)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction    A    B    C    D    E
+##          A 1674    5    0    0    0
+##          B    0 1130    2    0    0
+##          C    0    3 1024    5    1
+##          D    0    1    0  959    1
+##          E    0    0    0    0 1080
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9969          
+##                  95% CI : (0.9952, 0.9982)
+##     No Information Rate : 0.2845          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.9961          
+##  Mcnemar's Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: A Class: B Class: C Class: D Class: E
+## Sensitivity            1.0000   0.9921   0.9981   0.9948   0.9982
+## Specificity            0.9988   0.9996   0.9981   0.9996   1.0000
+## Pos Pred Value         0.9970   0.9982   0.9913   0.9979   1.0000
+## Neg Pred Value         1.0000   0.9981   0.9996   0.9990   0.9996
+## Prevalence             0.2845   0.1935   0.1743   0.1638   0.1839
+## Detection Rate         0.2845   0.1920   0.1740   0.1630   0.1835
+## Detection Prevalence   0.2853   0.1924   0.1755   0.1633   0.1835
+## Balanced Accuracy      0.9994   0.9958   0.9981   0.9972   0.9991</code></pre>
+<div id="model-analysis">
+<h2>
+<a id="model-analysis" class="anchor" href="#model-analysis" aria-hidden="true"><span class="octicon octicon-link"></span></a>Model Analysis</h2>
+<p>Analysis indicates that in the 3 cross-validation that have been made, the accuracy is between 97% and 99%. Therefore the out-of-sample error is between 1% and 3%, and will be sufficient to submit the results.</p>
+</div>
+
+<p></p>
+</div>
+
+<div id="prediction">
+<h1>
+<a id="prediction" class="anchor" href="#prediction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prediction</h1>
+<p>Use model to predict testing set.</p>
+<pre><code>prediction &lt;- predict(modelFit, testing_set, type="raw")
+prediction</code></pre>
+<pre><code>##  [1] B A B A A E D B A A B C B A E E A B B B
+## Levels: A B C D E</code></pre>
+</div>
+
+<div id="create-files-for-submission">
+<h1>
+<a id="create-files-for-submission" class="anchor" href="#create-files-for-submission" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create files for submission</h1>
+<pre><code>for (i in seq(20)){
+  fileName&lt;-paste("problem",i,".txt",sep="_")
+  write.table(prediction[i],file=fileName,quote=FALSE,row.names=FALSE,col.names=FALSE)
+}</code></pre>
+</div>
+
+<p></p>
+</div>
+
+
+
+
+
+
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
-
-    </section>
-
-  
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
   </body>
 </html>
-
