@@ -1,0 +1,99 @@
+---
+title: "Human Activity Recognition"
+author: 'Peer Assessment: Practical Machine Learning Project (Coursera) -- by: M Turk'
+date: "Friday, May 22, 2015"
+output: html_document
+---
+
+# Background
+```{r setoptions, warning=FALSE, message=FALSE}
+```
+Using devices such as Jawbone Up, Nike FuelBand, and Fitbit it is now possible to collect a large amount of data about personal activity relatively inexpensively. These type of devices are part of the quantified self movement - a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. One thing that people regularly do is quantify how much of a particular activity they do, but they rarely quantify how well they do it. In this project, your goal will be to use data from accelerometers on the belt, forearm, arm, and dumbbell of 6 participants. They were asked to perform barbell lifts correctly and incorrectly in 5 different ways. More information is available from the website here: URL:[http://groupware.les.inf.puc-rio.br/har](http://groupware.les.inf.puc-rio.br/har) (see the section on the Weight Lifting Exercise Dataset). 
+
+# Data
+The training data for this project are available here: URL:[https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv](https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv)
+
+The test data are available here: URL:[https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv](https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv)
+
+# Require Libraries
+```{r package, warning=FALSE, message=FALSE}
+require(caret)
+```
+
+# Load  and Preprocess data
+
+Loading the data and updating the values of '#DIV/0!' to NA.
+
+Further preprocessing of the NA's into meaningful values for machine learning models will be to assign the mean of the field to the NA's in that field and using the nearZeroVar function in caret to remove the near zero variance predictors.
+
+```{r data, warning=FALSE, message=FALSE}
+# Load Data and preprocess na's.
+training_set <- read.csv("pml-training.csv", na.strings=c("NA","#DIV/0!",""))
+testing_set <- read.csv("pml-testing.csv", na.strings=c("NA","#DIV/0!",""))
+
+# Assigning the column mean to the NA values for each column.
+for (col in names(training_set)){if(class(training_set[[col]]) %in% c("integer", "numeric")){
+                avg<-mean(training_set[[col]], na.rm = TRUE)
+                training_set[[col]][is.na(training_set[[col]])]<-avg}}
+
+# Remove 1:5 columns of irrelivent data.
+training_set <- training_set[,-c(1:5)]
+
+# Remove near zero variance predictors.
+training_set <- training_set[,-nearZeroVar(training_set)]
+```
+
+# Create Train/Test Datasets
+
+Create a training and testing dataset partition using the createDataPartition function in caret.
+
+```{r partition, warning=FALSE, message=FALSE}
+inTrain <- createDataPartition(y=training_set$classe, p=0.7, list=FALSE)
+train <- training_set[inTrain,]
+test <- training_set[-inTrain,]
+```
+
+# Train Model
+
+Use randomForest function in caret and the "train" dataset partition to train model.  
+
+
+```{r train, cache=TRUE, warning=FALSE, message=FALSE}
+cv <- trainControl(method="cv", number=3)
+modelFit <- train(train$classe~., data=train, method="rf", trControl=cv)
+```
+
+# Model Results
+
+Use the model trained from the "train" dataset partition to predict "test" dataset partition and analyse the predicted results.
+
+```{r results, warning=FALSE, message=FALSE}
+results <- predict(modelFit, test)
+confusionMatrix(results, test$classe)
+```
+
+##  Model Analysis
+Analysis indicates that in the 3 cross-validation that have been made, the accuracy is between 97% and 99%. Therefore the out-of-sample error is between 1% and 3%, and will be sufficient to submit the results.
+
+# Prediction
+
+Use model to predict testing set.
+
+```{r prediction, warning=FALSE, message=FALSE}
+prediction <- predict(modelFit, testing_set, type="raw")
+prediction
+```
+
+
+# Create files for submission
+
+```{r write, warning=FALSE, message=FALSE}
+for (i in seq(20)){
+  fileName<-paste("problem",i,".txt",sep="_")
+  write.table(prediction[i],file=fileName,quote=FALSE,row.names=FALSE,col.names=FALSE)
+}
+```
+
+
+
+
